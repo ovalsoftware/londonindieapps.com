@@ -1,0 +1,13 @@
+title: London Indie App Developers
+description: An invite-only community of independent app developers based in London, UK
+url: "https://londonindieapps.com"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
