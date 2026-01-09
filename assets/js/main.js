@@ -2,9 +2,22 @@
 document.addEventListener('DOMContentLoaded', () => {
   const appRows = document.querySelectorAll('.app-row');
 
-  // Duplicate icons for seamless scrolling effect
+  // Shuffle and duplicate icons for seamless scrolling effect
   appRows.forEach(row => {
     const track = row.querySelector('.app-track');
+    const iconElements = Array.from(track.children);
+
+    // Fisher-Yates shuffle
+    for (let i = iconElements.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [iconElements[i], iconElements[j]] = [iconElements[j], iconElements[i]];
+    }
+
+    // Rebuild track with shuffled icons
+    track.innerHTML = '';
+    iconElements.forEach(icon => track.appendChild(icon));
+
+    // Duplicate for seamless scrolling
     const icons = track.innerHTML;
     track.innerHTML = icons + icons + icons;
   });
@@ -88,19 +101,6 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeModal();
-    closeMenu();
   }
 });
 
-// Mobile menu functions
-function toggleMenu() {
-  document.querySelector('.hamburger').classList.toggle('active');
-  document.querySelector('.header-nav').classList.toggle('active');
-  document.body.style.overflow = document.querySelector('.header-nav').classList.contains('active') ? 'hidden' : '';
-}
-
-function closeMenu() {
-  document.querySelector('.hamburger').classList.remove('active');
-  document.querySelector('.header-nav').classList.remove('active');
-  document.body.style.overflow = '';
-}
