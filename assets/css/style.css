@@ -439,10 +439,11 @@ footer {
   }
 
   .hamburger {
-    display: flex;
+    display: flex !important;
   }
 
   .header-nav {
+    display: none !important;
     position: fixed;
     top: 0;
     left: 0;
@@ -453,14 +454,10 @@ footer {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .header-nav.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex !important;
   }
 
   .header-nav a {
