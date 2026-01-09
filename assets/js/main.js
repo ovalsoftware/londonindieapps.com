@@ -88,5 +88,19 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeModal();
+    closeMenu();
   }
 });
+
+// Mobile menu functions
+function toggleMenu() {
+  document.querySelector('.hamburger').classList.toggle('active');
+  document.querySelector('.header-nav').classList.toggle('active');
+  document.body.style.overflow = document.querySelector('.header-nav').classList.contains('active') ? 'hidden' : '';
+}
+
+function closeMenu() {
+  document.querySelector('.hamburger').classList.remove('active');
+  document.querySelector('.header-nav').classList.remove('active');
+  document.body.style.overflow = '';
+}

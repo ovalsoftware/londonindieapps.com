@@ -68,6 +68,38 @@ body {
   gap: 2rem;
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 101;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
 .header-nav a {
   font-size: 0.875rem;
   font-weight: 300;
@@ -406,9 +438,50 @@ footer {
     --app-icon-size: min(140px, 28vw);
   }
 
+  .hamburger {
+    display: flex;
+  }
+
+  .header-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.98);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .header-nav.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .header-nav a {
+    font-size: 1.5rem;
+  }
+
+  .header-nav .btn-small {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+
   .hero {
     min-height: auto;
-    padding: 7rem 1.5rem 2rem;
+    padding: 8rem 1.5rem 2rem;
+  }
+
+  .hero h1 {
+    max-width: 6ch;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.1;
   }
 
   .hero p {
